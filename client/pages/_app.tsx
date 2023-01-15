@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import "@/styles/globals.css";
 import { Global } from "@emotion/react";
 import Head from "next/head";

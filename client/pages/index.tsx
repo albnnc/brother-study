@@ -1,7 +1,7 @@
 import { Button, Radio, Checkbox } from "antd";
 import { AppLayout } from "@/components";
 
-export default function Home() {
+export default function Page() {
   return (
     <AppLayout>
       <Button>Click Me!</Button>

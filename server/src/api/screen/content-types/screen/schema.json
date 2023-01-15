@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "screens",
+  "info": {
+    "singularName": "screen",
+    "pluralName": "screens",
+    "displayName": "Screen"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    },
+    "movie": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "keywords": {
+      "type": "json"
+    },
+    "data": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

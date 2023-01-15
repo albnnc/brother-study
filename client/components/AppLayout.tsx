@@ -20,10 +20,10 @@ export const AppLayout = ({ children, ...rest }: LayoutProps) => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["home"]}
+          defaultSelectedKeys={[router.pathname]}
           items={[
             {
-              key: "home",
+              key: "/home",
               icon: <IoMdImages size="1.65rem" sx={{ my: "-0.4rem" }} />,
               label: "Screens",
               onClick: () => {
@@ -31,14 +31,14 @@ export const AppLayout = ({ children, ...rest }: LayoutProps) => {
               },
             },
             {
-              key: "library",
+              key: "/library",
               label: "Library",
               onClick: () => {
                 router.push("/library");
               },
             },
             {
-              key: "upload",
+              key: "/upload",
               label: "Upload",
               onClick: () => {
                 router.push("/upload");
