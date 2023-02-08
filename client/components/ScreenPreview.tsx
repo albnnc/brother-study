@@ -23,7 +23,6 @@ export const ScreenPreview = ({ data, ...rest }: ScreenPreviewProps) => {
         <CardMedia
           component="img"
           image={`/api/strapi` + data?.attributes?.data?.data?.attributes?.url}
-          alt="Paella dish"
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
