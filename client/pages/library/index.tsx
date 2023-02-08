@@ -2,7 +2,7 @@ import { AppLayout } from "@/components";
 import { ScreenPreview } from "@/components/ScreenPreview";
 import { useScreens } from "@/hooks";
 import { useRouter } from "next/router";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import Masonry from "@mui/lab/Masonry";
 
 export default function Page() {
   const router = useRouter();
@@ -17,17 +17,15 @@ export default function Page() {
   return (
     <AppLayout>
       {items && (
-        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
-          <Masonry style={{ gap: "1rem" }}>
-            {items.map((v) => (
-              <ScreenPreview
-                key={v.id}
-                data={v}
-                onClick={() => router.push(`/library/${v.id}`)}
-              />
-            ))}
-          </Masonry>
-        </ResponsiveMasonry>
+        <Masonry columns={3} spacing={2}>
+          {items.map((v) => (
+            <ScreenPreview
+              key={v.id}
+              data={v}
+              onClick={() => router.push(`/library/${v.id}`)}
+            />
+          ))}
+        </Masonry>
       )}
     </AppLayout>
   );
