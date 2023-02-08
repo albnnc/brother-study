@@ -1,6 +1,11 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable @next/next/no-img-element */
-import { Card, CardProps } from "antd";
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  CardProps,
+  Typography,
+} from "@mui/material";
 
 const maxDescriptionLength = 100;
 
@@ -13,16 +18,19 @@ export const ScreenPreview = ({ data, ...rest }: ScreenPreviewProps) => {
   const targetDescription = originalDescription.slice(0, maxDescriptionLength);
   const trimmed = targetDescription.length < originalDescription.length;
   return (
-    <Card
-      hoverable
-      cover={
-        <img
-          src={`/api/strapi` + data?.attributes?.data?.data?.attributes?.url}
+    <Card {...rest}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          image={`/api/strapi` + data?.attributes?.data?.data?.attributes?.url}
+          alt="Paella dish"
         />
-      }
-      {...rest}
-    >
-      <Card.Meta description={targetDescription + (trimmed ? "..." : "")} />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+            {targetDescription + (trimmed ? "..." : "")}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
     </Card>
   );
 };
