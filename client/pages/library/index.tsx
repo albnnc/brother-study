@@ -31,7 +31,7 @@ export default function Page() {
       {hasNext && (
         <Box sx={{ py: "1rem", display: "flex", justifyContent: "center" }}>
           <Button disabled={isLoading} onClick={() => setSize((v) => v + 1)}>
-            Load More
+            Загрузить ещё
           </Button>
         </Box>
       )}

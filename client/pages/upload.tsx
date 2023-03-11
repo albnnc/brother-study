@@ -67,7 +67,7 @@ export default function Page() {
                   },
                 }}
                 {...register("files", {
-                  required: "Required",
+                  required: "Обязательное поле",
                 })}
               />
               <TextField
@@ -76,7 +76,7 @@ export default function Page() {
                 variant="outlined"
                 error={!!errors.description}
                 {...register("description", {
-                  required: "Required",
+                  required: "Обязательное поле",
                 })}
               />
               <Button
@@ -86,7 +86,7 @@ export default function Page() {
                 color="primary"
                 sx={{ ml: "auto" }}
               >
-                Upload
+                Загрузить
               </Button>
             </Box>
           </form>
@@ -104,7 +104,7 @@ export default function Page() {
           variant="filled"
           sx={{ width: "100%" }}
         >
-          Upload has failed
+          Произошла ошибка
         </Alert>
       </Snackbar>
     </AppLayout>

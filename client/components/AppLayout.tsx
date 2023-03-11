@@ -4,12 +4,6 @@ import {
   BoxProps,
   Button,
   Container,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Menu,
-  MenuItem,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -18,11 +12,11 @@ import { IoMdImages } from "react-icons/io";
 
 const pages = [
   {
-    title: "Libray",
+    title: "Библиотека",
     href: "/library",
   },
   {
-    title: "Upload",
+    title: "Загрузка",
     href: "/upload",
   },
 ];
@@ -52,11 +46,11 @@ export const AppLayout = ({ children, ...rest }: BoxProps) => {
                 fontSize: "1rem",
                 textTransform: "uppercase",
                 fontWeight: 700,
-                letterSpacing: "0.2rem",
+                letterSpacing: "0.1rem",
                 textDecoration: "none",
               }}
             >
-              Screens
+              Кадры
             </Typography>
             <Box sx={{ ml: "auto", display: "flex" }}>
               {pages.map((v) => (
@@ -77,7 +71,7 @@ export const AppLayout = ({ children, ...rest }: BoxProps) => {
       </Box>
       <Box sx={{ pb: 4 }}>
         <Container sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Box>Screens</Box>
+          <Box>Кадры</Box>
           <Box>Ⓒ 2023</Box>
         </Container>
       </Box>

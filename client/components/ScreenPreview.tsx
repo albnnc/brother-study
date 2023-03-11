@@ -11,9 +11,14 @@ const maxDescriptionLength = 100;
 
 export interface ScreenPreviewProps extends CardProps {
   data: any;
+  compact?: boolean;
 }
 
-export const ScreenPreview = ({ data, ...rest }: ScreenPreviewProps) => {
+export const ScreenPreview = ({
+  data,
+  compact,
+  ...rest
+}: ScreenPreviewProps) => {
   const originalDescription = (data?.attributes?.description as string) || "";
   const targetDescription = originalDescription.slice(0, maxDescriptionLength);
   const trimmed = targetDescription.length < originalDescription.length;
@@ -24,11 +29,13 @@ export const ScreenPreview = ({ data, ...rest }: ScreenPreviewProps) => {
           component="img"
           image={`/api/strapi` + data?.attributes?.data?.data?.attributes?.url}
         />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            {targetDescription + (trimmed ? "..." : "")}
-          </Typography>
-        </CardContent>
+        {!compact && (
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              {targetDescription + (trimmed ? "..." : "")}
+            </Typography>
+          </CardContent>
+        )}
       </CardActionArea>
     </Card>
   );
