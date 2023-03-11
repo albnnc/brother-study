@@ -7,8 +7,9 @@ export const useScreens = () => {
       const query = qs.stringify(
         {
           populate: "*",
+          sort: "createdAt:desc",
           pagination: {
-            pageSize: 10,
+            pageSize: 15,
             page: index + 1,
           },
         },

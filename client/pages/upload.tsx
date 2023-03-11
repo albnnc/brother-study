@@ -50,7 +50,11 @@ export default function Page() {
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
               <TextField
                 type="file"
+                error={!!errors.files}
                 InputProps={{
+                  inputProps: {
+                    accept: "image/*",
+                  },
                   startAdornment: (
                     <InputAdornment position="start">
                       <IoImageOutline size="1.45rem" />
@@ -62,7 +66,6 @@ export default function Page() {
                     display: "none",
                   },
                 }}
-                error={!!errors.files}
                 {...register("files", {
                   required: "Required",
                 })}

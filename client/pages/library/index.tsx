@@ -3,17 +3,18 @@ import { ScreenPreview } from "@/components/ScreenPreview";
 import { useScreens } from "@/hooks";
 import { useRouter } from "next/router";
 import Masonry from "@mui/lab/Masonry";
+import { Box, Button } from "@mui/material";
 
 export default function Page() {
   const router = useRouter();
-  const { data: pages } = useScreens();
+  const { data: pages, isLoading, setSize } = useScreens();
   const meta = pages?.[0]?.meta ?? {};
   const items = ((pages ?? []) as any[]).reduce<any[]>(
     (p, v) => p.concat(v.data),
     []
   );
-  console.log("meta", meta);
-  console.log("items", items);
+  const pageCount = meta?.pagination?.pageCount || 0;
+  const hasNext = pages && pages.length < pageCount;
   return (
     <AppLayout>
       {items && (
@@ -26,6 +27,13 @@ export default function Page() {
             />
           ))}
         </Masonry>
+      )}
+      {hasNext && (
+        <Box sx={{ py: "1rem", display: "flex", justifyContent: "center" }}>
+          <Button disabled={isLoading} onClick={() => setSize((v) => v + 1)}>
+            Load More
+          </Button>
+        </Box>
       )}
     </AppLayout>
   );
