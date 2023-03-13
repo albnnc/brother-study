@@ -17,7 +17,7 @@ export default function Page() {
   const hasNext = pages && pages.length < pageCount;
   return (
     <AppLayout>
-      {items && (
+      {items.length ? (
         <Masonry columns={3} spacing={2}>
           {items.map((v) => (
             <ScreenPreview
@@ -27,6 +27,17 @@ export default function Page() {
             />
           ))}
         </Masonry>
+      ) : (
+        <Box
+          sx={{
+            textAlign: "center",
+            fontSize: "2.5rem",
+            fontWeight: 300,
+            opacity: 0.5,
+          }}
+        >
+          Нет загруженных кадров
+        </Box>
       )}
       {hasNext && (
         <Box sx={{ py: "1rem", display: "flex", justifyContent: "center" }}>

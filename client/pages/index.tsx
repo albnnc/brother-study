@@ -11,6 +11,7 @@ export default function Page() {
     (p, v) => p.concat(v.data),
     []
   );
+  console.log(items);
   return (
     <AppLayout>
       <Typography variant="h4">Привет!</Typography>
@@ -18,35 +19,48 @@ export default function Page() {
         Это – лучший проект
       </Typography>
       <Typography variant="h4">Последние загрузки</Typography>
-      <Box sx={{ mx: "-0.5rem" }}>
-        <Slider
-          infinite
-          autoplay
-          arrows={false}
-          slidesToShow={3}
-          slidesToScroll={1}
-          autoplaySpeed={2000}
+      {items.length ? (
+        <Box sx={{ mx: "-0.5rem" }}>
+          <Slider
+            infinite
+            autoplay
+            arrows={false}
+            slidesToShow={Math.min(items.length, 3)}
+            slidesToScroll={1}
+            autoplaySpeed={2000}
+          >
+            {items.map((v) => (
+              <Box
+                key={v.id}
+                sx={{
+                  p: "0.5rem",
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <ScreenPreview
+                  compact
+                  data={v}
+                  onClick={() => router.push(`/library/${v.id}`)}
+                />
+              </Box>
+            ))}
+          </Slider>
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            textAlign: "center",
+            fontSize: "2rem",
+            fontWeight: 300,
+            opacity: 0.5,
+          }}
         >
-          {items.map((v) => (
-            <Box
-              key={v.id}
-              sx={{
-                p: "0.5rem",
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <ScreenPreview
-                compact
-                data={v}
-                onClick={() => router.push(`/library/${v.id}`)}
-              />
-            </Box>
-          ))}
-        </Slider>
-      </Box>
+          Нет загруженных кадров
+        </Box>
+      )}
     </AppLayout>
   );
 }

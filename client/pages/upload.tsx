@@ -71,7 +71,7 @@ export default function Page() {
                 })}
               />
               <TextField
-                label="Description"
+                label="Описание"
                 multiline
                 variant="outlined"
                 error={!!errors.description}
