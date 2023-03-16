@@ -11,7 +11,6 @@ export default function Page() {
     (p, v) => p.concat(v.data),
     []
   );
-  console.log(items);
   return (
     <AppLayout>
       <Typography variant="h4">Привет!</Typography>

@@ -29,13 +29,13 @@ export default function Page() {
       <Card sx={{ mx: "auto", maxWidth: "500px" }}>
         <CardContent>
           <form
-            onSubmit={handleSubmit(({ files, description }) => {
+            onSubmit={handleSubmit(({ files, movie, description }) => {
               if (loading) {
                 return;
               }
               const formData = new FormData();
               formData.append(`files.data`, files[0], files[0]?.name);
-              formData.append("data", JSON.stringify({ description }));
+              formData.append("data", JSON.stringify({ movie, description }));
               setLoading(true);
               uploadScreen(formData)
                 .then(validateHttpResponse)
@@ -67,6 +67,15 @@ export default function Page() {
                   },
                 }}
                 {...register("files", {
+                  required: "Обязательное поле",
+                })}
+              />
+              <TextField
+                label="Фильм / сериал"
+                multiline
+                variant="outlined"
+                error={!!errors.description}
+                {...register("movie", {
                   required: "Обязательное поле",
                 })}
               />
